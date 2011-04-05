@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>eescardo.web</groupId>
+    <artifactId>root</artifactId>
+    <version>1.0</version>
+  </parent>
+
+  <name>Data Layer</name>
+  <description>Data layer code for the site.</description>
+  <artifactId>data</artifactId>
+  <packaging>jar</packaging>
+  <dependencies>
+  
+    <dependency>
+      <groupId>org.codehaus.btm</groupId>
+      <artifactId>btm</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib-nodep</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+    </dependency>
+    
+    <dependency>
+      <!-- For Spring, which uses JCL -->
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <optional>true</optional>
+    </dependency>
+    
+    <dependency>
+      <!-- For Spring, which uses JCL -->
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+    </dependency>
+
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-plugin</artifactId>
+        <configuration>
+          <changeLogFile>dbschema.xml</changeLogFile>
+          <contexts>${liquibase.contexts}</contexts>
+          <driver>${database.driver}</driver>
+          <url>jdbc:${database.url}</url>
+          <username>${database.username}</username>
+          <password>${database.password}</password>
+          <logging>warning</logging>
+          <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+          <includeArtifact>true</includeArtifact>
+          <rollbackCount>1</rollbackCount>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

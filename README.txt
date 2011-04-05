@@ -1,0 +1,1 @@
+This project is meant to be a clean development environment for java web projects that includes Maven, Spring and Freemarker config ready to start more serious development.

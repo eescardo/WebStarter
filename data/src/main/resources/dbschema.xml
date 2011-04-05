@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"
+  logicalFilePath="META-INF/dbschema.xml">
+
+  <!-- Quick reference:                                                                                                         
+         - mvn liquibase:update ensures all changesets are applied to database                                               
+         - mvn liquibase:rollback reverts the last change applied to                                                         
+                                                                                                                               
+       DO NOT MODIFY CHANGESETS THAT ARE ALREADY IN FILE! -->
+
+  <changeSet author="eescardo" id="2011-April-1#1">
+    <preConditions>
+      <dbms type="postgresql"/>
+    </preConditions>
+    <comment>Creating web application access roles</comment>
+
+    <!-- Create a role for the web application -->
+    <sql>DROP ROLE IF EXISTS web</sql>
+    <sql>CREATE ROLE web WITH NOINHERIT LOGIN ENCRYPTED PASSWORD 'development'</sql>
+
+  </changeSet>
+  <changeSet author="eescardo" id="2011-April-1#2">
+    <preConditions>
+      <dbms type="postgresql"/>
+    </preConditions>
+    <comment>Creating user table</comment>
+
+    <!-- Create the table -->
+    <createTable tableName="users" remarks="The main user table">
+      <column name="userid" type="BIGINT" autoIncrement="true" remarks="The user's generated ID">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="firstname" type="VARCHAR(126)" remarks="The user's first name">
+        <constraints nullable="false"/>
+      </column>
+      <column name="lastname" type="VARCHAR(126)" remarks="The user's last name">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <!-- Grant privileges to the web application -->
+    <sql>GRANT INSERT, SELECT, UPDATE ON TABLE users TO web</sql>
+    <sql>GRANT USAGE ON SEQUENCE users_userid_seq TO web</sql>
+
+
+    <rollback>
+      <dropTable tableName="users"/>
+      <sql>REVOKE INSERT, SELECT, UPDATE ON TABLE users TO web</sql>
+      <sql>REVOKE USAGE ON SEQUENCE users_userid_seq TO web</sql>
+    </rollback>
+
+  </changeSet>
+
+</databaseChangeLog>

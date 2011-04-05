@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>eescardo.web</groupId>
+  <artifactId>root</artifactId>
+  <version>1.0</version>
+
+  <name>Web Root</name>
+  <packaging>pom</packaging>
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>catalina</artifactId>
+        <version>${tomcat-version}</version>
+        <scope>provided</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>juli</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>annotations-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      
+      <dependency>
+        <!-- License: LGPL -->
+        <groupId>org.codehaus.btm</groupId>
+        <artifactId>btm</artifactId>
+        <version>2.1.0</version>
+        <scope>compile</scope>
+      </dependency>
+      
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>cglib</groupId>
+        <artifactId>cglib-nodep</artifactId>
+        <version>2.2</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: BSD -->
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.16</version>
+        <scope>compile</scope>
+      </dependency>
+      
+      <dependency>
+        <!-- License: Java EE SDK -->
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: Common Public License -->
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.8.2</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: LGPL -->
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>1.9.5</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: MIT -->
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>1.8.5</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: BSD -->
+        <groupId>postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>9.0-801.jdbc4</version>
+        <scope>runtime</scope>
+      </dependency>
+      
+      <dependency>
+        <!-- License: MIT -->
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4j-version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      
+      <dependency>
+        <!-- License: MIT -->
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>${slf4j-version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring-version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${spring-version}</version>
+        <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring-version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring-version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <!-- License: Apache 2.0 -->
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring-version}</version>
+        <scope>compile</scope>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+  <build>
+    <pluginManagement>
+      <plugins>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.4.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.4.3</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.1.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.liquibase</groupId>
+          <artifactId>liquibase-plugin</artifactId>
+          <version>1.9.5.0</version>
+        </plugin>
+      </plugins>
+
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>${platformJvmArgs}</argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <skipTests>${skipITs}</skipTests>
+          <argLine>${platformJvmArgs}</argLine>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central-public</id>
+      <name>Maven Plugin Repository</name>
+      <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <properties>
+    <tomcat-version>6.0.29</tomcat-version>
+    <spring-version>3.0.5.RELEASE</spring-version>
+    <slf4j-version>1.6.1</slf4j-version>
+    <platformJvmArgs></platformJvmArgs>
+    <database.driver>org.postgresql.Driver</database.driver>
+    <database.url>postgresql:web</database.url>
+    <database.username>postgres</database.username>
+    <database.password>localhost</database.password>
+    <database.username.shell>shell</database.username.shell>
+    <database.password.shell>development</database.password.shell>
+    <liquibase.contexts>development</liquibase.contexts>
+  </properties>
+
+  <modules>
+    <module>data</module>
+    <module>web</module>
+  </modules>
+
+  <organization>
+    <name>Eddy Escardo</name>
+    <url>http://www.eescardo.com</url>
+  </organization>
+  <inceptionYear>2011</inceptionYear>
+</project>
