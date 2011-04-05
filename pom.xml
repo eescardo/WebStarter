@@ -18,20 +18,6 @@
         <artifactId>catalina</artifactId>
         <version>${tomcat-version}</version>
         <scope>provided</scope>
-        <exclusions>
-          <exclusion>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>servlet-api</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>juli</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>annotations-api</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
       
       <dependency>
@@ -117,15 +103,7 @@
       <dependency>
         <!-- License: Apache 2.0 -->
         <groupId>org.springframework</groupId>
-        <artifactId>spring-aop</artifactId>
-        <version>${spring-version}</version>
-        <scope>runtime</scope>
-      </dependency>
-
-      <dependency>
-        <!-- License: Apache 2.0 -->
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context-support</artifactId>
+        <artifactId>spring-context</artifactId>
         <version>${spring-version}</version>
         <scope>compile</scope>
       </dependency>
