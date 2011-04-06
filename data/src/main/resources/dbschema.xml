@@ -18,6 +18,10 @@
     <!-- Create a role for the web application -->
     <sql>DROP ROLE IF EXISTS web</sql>
     <sql>CREATE ROLE web WITH NOINHERIT LOGIN ENCRYPTED PASSWORD 'development'</sql>
+    
+    <rollback>
+      <sql>DROP ROLE IF EXISTS web</sql>
+    </rollback>
 
   </changeSet>
   <changeSet author="eescardo" id="2011-April-1#2">
